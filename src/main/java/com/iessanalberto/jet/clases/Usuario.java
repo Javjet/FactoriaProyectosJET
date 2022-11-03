@@ -49,7 +49,7 @@ public class Usuario {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    @XmlElement(name="contraseña")
     public String getContraseña() {
         return contraseña;
     }
@@ -57,7 +57,7 @@ public class Usuario {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-
+    @XmlElement(name="puntuacion")
     public Double getPuntuacion() {
         return puntuacion;
     }
@@ -65,7 +65,7 @@ public class Usuario {
     public void setPuntuacion(Double puntuacion) {
         this.puntuacion = puntuacion;
     }
-
+    @XmlElement(name="familiaProfesional")
     public String getFamiliaProfesional() {
         return familiaProfesional;
     }
@@ -73,7 +73,7 @@ public class Usuario {
     public void setFamiliaProfesional(String familiaProfesional) {
         this.familiaProfesional = familiaProfesional;
     }
-
+    @XmlElement(name="email")
     public String getEmail() {
         return email;
     }
@@ -81,7 +81,7 @@ public class Usuario {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @XmlElement(name="telefono")
     public String getTelefono() {
         return telefono;
     }
@@ -89,7 +89,8 @@ public class Usuario {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+    @XmlElementWrapper(name = "gustos")
+    @XmlElement(name="gusto")
     public String[] getGustos() {
         return gustos;
     }
@@ -97,7 +98,8 @@ public class Usuario {
     public void setGustos(String gustos[]) {
         this.gustos = gustos;
     }
-
+    @XmlElementWrapper(name = "comentariosPersonales")
+    @XmlElement(name="comentariosPersonal")
     public String[] getComentariosPersonales() {
         return comentariosPersonales;
     }
@@ -105,7 +107,27 @@ public class Usuario {
     public void setComentariosPersonales(String[] comentariosPersonales) {
         this.comentariosPersonales = comentariosPersonales;
     }
+    @XmlElementWrapper(name = "historial")
+    @XmlElement(name="proyecto")
+    public Proyecto[] getHistorial() {
+        return historial;
+    }
 
+    public void setHistorial(Proyecto[] historial) {
+        this.historial = historial;
+    }
+    @XmlElementWrapper(name = "historialFavoritos")
+    @XmlElement(name="favorito")
+    public Proyecto[] getProyectosFavoritos() {
+        return proyectosFavoritos;
+    }
+
+    public void setProyectosFavoritos(Proyecto[] proyectosFavoritos) {
+        this.proyectosFavoritos = proyectosFavoritos;
+    }
+
+    @XmlElementWrapper(name = "comentariosPersonales")
+    @XmlElement(name="comentariosPersonal")
     public String[] getComentariosExternos() {
         return comentariosExternos;
     }
