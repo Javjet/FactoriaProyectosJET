@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usuarios>
+	<usuario>
+		<rol>rol</rol>
+		<nombre>Javi</nombre>
+		<puntuacion>6</puntuacion>
+		<familiaProfesional>NonSe</familiaProfesional>
+		<email>e</email>
+		<telefono>a</telefono>
+		<gustos>
+			<gusto>Guzto</gusto>
+		</gustos>
+		<comentariosPersonales></comentariosPersonales>
+		<comentariosExternos></comentariosExternos>
+		<historial></historial>
+		<proyectosFavoritos></proyectosFavoritos>
+	</usuario>
+</usuarios>
