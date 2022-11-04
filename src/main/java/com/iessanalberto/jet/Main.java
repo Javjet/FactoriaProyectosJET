@@ -23,25 +23,35 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
         File archivo = new File("src/main/resources/usuarios.xml");
-
+        File archivoJson= new File("target/Usuarios.json");
         JAXBContext contexto;
         try {
             //para leer el documento
-            contexto = JAXBContext.newInstance(Usuario.class);
+            contexto = JAXBContext.newInstance(Usuarios.class);
             //unmarshaller para pasar de xml a java
             Unmarshaller objetoUnmarshaller = contexto.createUnmarshaller();
-            Usuario usuario;
+
             Usuarios usuarios;
+            List<String> textoAlumno =new ArrayList<>();
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            Gson gson = gsonBuilder.setPrettyPrinting().create();
             if(archivo.exists()) {
                 usuarios = (Usuarios) objetoUnmarshaller.unmarshal(archivo);
                 System.out.println(usuarios.getListaUsuarios().get(0).getNombre());
-                Marshaller objetoMarshaller=contexto.createMarshaller();
-                objetoMarshaller.marshal(usuarios,new FileWriter("target/Usuarios.json"));
+                //Marshaller objetoMarshaller=contexto.createMarshaller();
+                for (Usuario lista:usuarios.getListaUsuarios()) {
+
+                    textoAlumno.add(gson.toJson(lista));
+                    Files.write(archivoJson.toPath(), textoAlumno.get(textoAlumno.size()-1).getBytes());
+                }
+
             }
         } catch (JAXBException e) {
             e.printStackTrace();
