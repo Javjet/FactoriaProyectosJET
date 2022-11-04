@@ -5,7 +5,7 @@ import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
-@XmlRootElement (name="instituto")
+@XmlRootElement (name="usuario")
 @XmlType(propOrder ={"rol","nombre","contraseña","puntuacion","familiaProfesional","email","telefono","gustos","comentariosPersonales","comentariosExternos","historial","proyectosFavoritos"})
 public class Usuario {
 
