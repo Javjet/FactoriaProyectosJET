@@ -1,102 +1,59 @@
 package com.iessanalberto.jet;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.iessanalberto.jet.clases.Centros;
-import com.iessanalberto.jet.clases.Usuario;
-import com.iessanalberto.jet.clases.Usuarios;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
+import com.iessanalberto.jet.clases.*;
 
-import javax.swing.text.Element;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
 public class Main {
     public static void main(String[] args) {
-        crearUsuario();
-        crearCentro();
+        //Variables para un proyecto
 
-    }
-    public static void crearUsuario(){
-        File archivo = new File("src/main/resources/usuarios.xml");
-        File archivoJson= new File("target/Usuarios.json");
-        JAXBContext contexto;
-        try {
-            //para leer el documento
-            contexto = JAXBContext.newInstance(Usuarios.class);
-            //unmarshaller para pasar de xml a java
-            Unmarshaller objetoUnmarshaller = contexto.createUnmarshaller();
-
-            Usuarios usuarios;
-            List<String> textoAlumno =new ArrayList<>();
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            Gson gson = gsonBuilder.setPrettyPrinting().create();
-            if(archivo.exists()) {
-                usuarios = (Usuarios) objetoUnmarshaller.unmarshal(archivo);
-                //Marshaller objetoMarshaller=contexto.createMarshaller();
-                Files.write(archivoJson.toPath(), gson.toJson(usuarios).getBytes());
+        Valoracion valoracion = new Valoracion("Buen proyecto", 8.3);
+        ArrayList<String> participantes = new ArrayList<>(Arrays.asList("Alvaro, Javier, Miguel"));
+        ArrayList<String> tags = new ArrayList<>(Arrays.asList("Java, IntelliJIdea, Archivos"));
+        ArrayList<String> familiaImplicadas = new ArrayList<>(Arrays.asList("DAM, Programacion, Gestion de datos"));
+        String titulo = "FP2 generación de archivos";
+        String descripcion = "Este conjunto de clases permiten generar archivos xml y json";
+        String coordinador = "Miguel";
+        Boolean estado = true;
+        Boolean visibilidad = true;
+        //Datos para un usuario
+        Alumnos alumno = new Alumnos("rol1", "nombre1", "contraseña", "familiaProfesional", "email", new String[]{"gusto1", "gusto12"});
+        alumno.setCentro("centro");
+        List<Usuario> listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(alumno);
+        Usuarios usuarios = new Usuarios();
+        usuarios.setListaUsuarios(listaUsuarios);
 
 
-            }
-        } catch (JAXBException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public static void crearCentro(){
-        //Creamos un archivo que apunta a insti.xml
-        File xmlCentros = new File("src/main/resources/centros.xml");
-        Path archivo = Path.of("target/centros.json");
-        try
-        {
-            //Creamos el contexto para trabajar con nuestra clase Instituto.
-            JAXBContext contexto = JAXBContext.newInstance(Centros.class);
+        //Creacion del proyecto
+        Proyecto proyecto = new Proyecto(participantes, tags, familiaImplicadas, titulo, descripcion, coordinador, valoracion, estado, visibilidad);
 
-            //Con el objeto tipo Unmarshaller pasamos de XML a Java.
-            Unmarshaller objetoUnmarshaller = contexto.createUnmarshaller();
-            Centros centro;	//Creamos un objeto tipo Centros.
+        //Se crea el proyecto y se añade a la lista de proyectos
+        ListaProyectos listaProyectos = new ListaProyectos();
+        listaProyectos.addProyectos(proyecto);
 
-            //Pasamos de XML a Java y mostramos por pantalla el contenido de la etiqueta <nombre>.
-            centro = (Centros) objetoUnmarshaller.unmarshal(xmlCentros);
+        Profesor profesor = new Profesor
+                ("rol1", "nombre1", "contraseña", "familiaProfesional", "email", new String[]{"gusto1", "gusto12"});
+        alumno.setCentro("centro");
 
-            System.out.println(centro.getNombre());
-            System.out.println("\n" + "\n");
+        Centros centro = new Centros("IES San Alberto", "a", "Informatica", 1, listaProyectos, profesor,
+                alumno);
+        //Utilizamos el metodo generarXML con la lista de proyectos para generar el XML
+        generarXML estructuraDatosXml = new generarXML();
+        estructuraDatosXml.setListaProyectos(listaProyectos);
+        estructuraDatosXml.setUsuarios(usuarios);
+        estructuraDatosXml.setCentros(centro);
+        estructuraDatosXml.generar();
+        generarJson generarJson = new generarJson();
+        generarJson.generar();
 
-            //Pasamos de objeto a archivo .json
-
-            GsonBuilder builder = new GsonBuilder();
-
-            Gson gson = builder.setPrettyPrinting().create();
-
-            String texto = gson.toJson(centro);
-
-            Files.writeString(archivo, texto);
-
-        } catch (JAXBException e)
-        {
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        //Otro constructor que permite generar un XML y JSON a la vez
+            /*GenerarJson generarJson=new GenerarJson(estructuraDatosXml);
+            generarJson.generar();*/
 
     }
 }

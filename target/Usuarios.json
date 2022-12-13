@@ -1,13 +1,15 @@
 {
-  "rol": "rol",
-  "nombre": "Javi",
-  "puntuacion": 6.0,
-  "familiaProfesional": "NonSe",
-  "email": "e",
-  "telefono": "a",
-  "gustos": [
-    "Guzto"
-  ],
-  "comentariosPersonales": [],
-  "historial": []
+  "listaUsuarios": [
+    {
+      "rol": "rol1",
+      "nombre": "nombre1",
+      "contraseña": "contraseña",
+      "familiaProfesional": "familiaProfesional",
+      "email": "email",
+      "gustos": [
+        "gusto1",
+        "gusto12"
+      ]
+    }
+  ]
 }

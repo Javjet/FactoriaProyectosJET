@@ -24,7 +24,7 @@ public class Usuario {
     private Proyecto[] historial;
     private Proyecto[] proyectosFavoritos;
 
-    public Usuario(String rol, String nombre,String contraseña,String familiaProfesional,String email,String[] gustos){
+    public Usuario(String rol, String nombre, String contraseña, String familiaProfesional, String email, String[] gustos){
         this.rol=rol;
         this.nombre=nombre;
         this.contraseña=contraseña;
@@ -32,7 +32,8 @@ public class Usuario {
         this.email=email;
         this.gustos=gustos;
     }
-    public Usuario(){};
+    public Usuario(){}
+
     @XmlElement(name="rol")
     public String getRol() {
         return rol;

@@ -1,0 +1,29 @@
+{
+  "nombre": "IES San Alberto",
+  "web": "a",
+  "familia_Profesional": "Informatica",
+  "contacto": 1,
+  "profesor": {
+    "rol": "rol1",
+    "nombre": "nombre1",
+    "contraseña": "contraseña",
+    "familiaProfesional": "familiaProfesional",
+    "email": "email",
+    "gustos": [
+      "gusto1",
+      "gusto12"
+    ]
+  },
+  "alumno": {
+    "centro": "centro",
+    "rol": "rol1",
+    "nombre": "nombre1",
+    "contraseña": "contraseña",
+    "familiaProfesional": "familiaProfesional",
+    "email": "email",
+    "gustos": [
+      "gusto1",
+      "gusto12"
+    ]
+  }
+}

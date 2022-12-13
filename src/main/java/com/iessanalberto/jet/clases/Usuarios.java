@@ -1,10 +1,10 @@
 package com.iessanalberto.jet.clases;
 
-import java.util.List;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
-import jakarta.xml.bind.annotation.XmlType;
+
+import java.util.List;
+
 @XmlRootElement (name="usuarios")
 public class Usuarios {
 
