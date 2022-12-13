@@ -1,0 +1,24 @@
+{
+  "proyectos": [
+    {
+      "participantes": [
+        "Alvaro, Javier, Miguel"
+      ],
+      "tags": [
+        "Java, IntelliJIdea, Archivos"
+      ],
+      "familias": [
+        "DAM, Programacion, Gestion de datos"
+      ],
+      "titulo": "FP2 generación de archivos",
+      "descripcion": "Este conjunto de clases permiten generar archivos xml y json",
+      "coordinador": "Miguel",
+      "valoracion": {
+        "comentario": "Buen proyecto",
+        "puntuacion": 8.3
+      },
+      "estado": true,
+      "visibilidad": true
+    }
+  ]
+}

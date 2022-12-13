@@ -1,32 +1,30 @@
 package com.iessanalberto.jet.clases;
 
-
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name="centro")
-@XmlType(propOrder= {"nombre","proyecto","web","contacto","profesor","familia_Profesional","alumno"})
+@XmlType(propOrder= {"nombre","proyectos","web","contacto","profesor","familia_Profesional","alumno"})
 
 public class Centros {
 
     private String nombre, web, familia_Profesional;
     private int contacto;
-    private Proyecto proyecto;
-    private Profesor profesores;
-    private Alumno alumno;
+    private ListaProyectos proyectos;
+    private Profesor profesor;
+    private Alumnos alumno;
 
-    public Centros(String nombre, String web, String familia_Profesional, int contacto, Proyecto proyecto, Profesor profesores,
-                   Alumno alumno) {
+    public Centros(String nombre, String web, String familia_Profesional, int contacto, ListaProyectos proyecto, Profesor profesor,
+                   Alumnos alumno) {
         super();
         this.nombre = nombre;
         this.web = web;
         this.familia_Profesional = familia_Profesional;
         this.contacto = contacto;
-        this.profesores = profesores;
+        this.profesor = profesor;
         this.alumno = alumno;
-        this.proyecto = proyecto;
+        this.proyectos = proyecto;
     }
 
     public Centros() {
@@ -41,13 +39,14 @@ public class Centros {
         this.nombre = nombre;
     }
 
-    @XmlElement(name = "proyecto")
-    public Proyecto getProyecto() {
-        return proyecto;
+
+    @XmlElement(name = "proyectos")
+    public ListaProyectos getProyectos() {
+        return proyectos;
     }
 
-    public void setProyecto(Proyecto proyecto) {
-        this.proyecto = proyecto;
+    public void setlistaProyectos(ListaProyectos proyectos) {
+        this.proyectos = proyectos;
     }
 
 
@@ -72,11 +71,11 @@ public class Centros {
 
     @XmlElement(name = "profesor")
     public Profesor getProfesor() {
-        return profesores;
+        return profesor;
     }
 
-    public void setProfesor(Profesor profesores) {
-        this.profesores = profesores;
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 
     @XmlElement(name = "familia_Profesional")
@@ -89,11 +88,12 @@ public class Centros {
     }
 
     @XmlElement(name = "alumno")
-    public Alumno getAlumno() {
+    public Alumnos getAlumno() {
         return alumno;
     }
 
-    public void setAlumno(Alumno alumno) {
+    public void setAlumno(Alumnos alumno) {
         this.alumno = alumno;
     }
 }
+

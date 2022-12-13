@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<proyectos>
+    <proyecto>
+        <titulo>FP2 generación de archivos</titulo>
+        <participantes>
+            <participante>Alvaro, Javier, Miguel</participante>
+        </participantes>
+        <tags>
+            <tag>Java, IntelliJIdea, Archivos</tag>
+        </tags>
+        <familias>
+            <familia>DAM, Programacion, Gestion de datos</familia>
+        </familias>
+        <descripcion>Este conjunto de clases permiten generar archivos xml y json</descripcion>
+        <coordinador>Miguel</coordinador>
+        <valoracion>
+            <comentario>Buen proyecto</comentario>
+            <puntuacion>8.3</puntuacion>
+        </valoracion>
+        <estado>true</estado>
+        <visibilidad>true</visibilidad>
+    </proyecto>
+</proyectos>

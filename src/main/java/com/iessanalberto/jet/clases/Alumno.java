@@ -1,8 +1,6 @@
 package com.iessanalberto.jet.clases;
 
-import com.iessanalberto.jet.clases.Usuario;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
 
 public class Alumno extends Usuario {
     private String centro;
